@@ -23,6 +23,7 @@ export const SelectAndConnectWalletButton: FC<Props> = ({
   }, [wallet]);
 
   const handleWalletClick = () => {
+    console.log("handleWalletClick");
     try {
       if (!wallet) {
         setVisible(true);
@@ -37,7 +38,7 @@ export const SelectAndConnectWalletButton: FC<Props> = ({
 
   return (
     <button
-      className="btn btn-primary btn-lg"
+      className="btn btn-primary btn-lg bg-info"
       onClick={handleWalletClick}
       disabled={connecting}
     >

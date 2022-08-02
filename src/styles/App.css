@@ -7,10 +7,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 18px;
   height: 100vh;
-  width: 100vw;
+  width: 98vw;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+a:hover {
+  color: royalblue;
 }

@@ -59,7 +59,7 @@ export const SolanaTweeterView: FC = ({}) => {
           </div>
 
           <div className="flex-none">
-            <WalletMultiButton className="btn btn-ghost" />
+            <WalletMultiButton className="" />
           </div>
         </div>
 

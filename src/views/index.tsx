@@ -1,4 +1,6 @@
 export { HomeView } from "./HomeView";
-export { GalleryView } from "./GalleryView";
-export { CandyMachineMintView } from "./CandyMachineMintView";
+export { TransferView } from "./TransferView";
+export { TermsOfUseView } from "./TermsOfUseView";
+export { FeeView } from "./FeeView";
+export { QaView } from "./QaView";
 export { SolanaTweeterView } from "./SolanaTweeterView";

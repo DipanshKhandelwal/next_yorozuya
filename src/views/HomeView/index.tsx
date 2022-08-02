@@ -1,82 +1,210 @@
 import Link from "next/link";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 
 import { SolanaLogo } from "components";
 import styles from "./index.module.css";
 
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import { styled } from "@mui/material/styles";
+import { stubTrue } from "lodash";
+
 export const HomeView: FC = ({}) => {
   const { publicKey } = useWallet();
+  console.log("publicKey = ", publicKey);
 
   const onClick = () => {};
+  const [buttonText, setButtonText] = useState("Next");
 
   return (
-    <div className="container mx-auto max-w-6xl p-8 2xl:px-0">
-      <div className={styles.container}>
-        <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content rounded-box">
-          <div className="flex-none">
-            <button className="btn btn-square btn-ghost">
-              <span className="text-4xl">🦤</span>
-            </button>
-          </div>
-          <div className="flex-1 px-2 mx-2">
-            <span className="text-lg font-bold">Caw Caw</span>
-          </div>
-          <div className="flex-none">
-            <WalletMultiButton className="btn btn-ghost" />
+    <div className="container mx-auto max-w-6xl px-0">
+      <div className="hero min-h-16 pb-10 pt-3">
+        <div className="text-center">
+          <div className="max-w-lg">
+            <h1 className="text-3xl font-bold">
+              {!publicKey ? <>Welcome to Crypto Yorozuya!</> : null}
+            </h1>
           </div>
         </div>
+      </div>
 
-        <div className="text-center pt-2">
-          <div className="hero min-h-16 py-4">
-            <div className="text-center hero-content">
-              <div className="max-w-lg">
-                <h1 className="mb-5 text-5xl font-bold">
-                  Hello Solana <SolanaLogo /> World!
-                </h1>
-                <p className="mb-5">
-                  This scaffold includes awesome tools for rapid development and
-                  deploy dapps to Solana: Next.JS, TypeScript, TailwindCSS,
-                  Daisy UI.
-                </p>
-                <p className="mb-5">
-                  Sollana wallet adapter is connected and ready to use.
-                </p>
-                <p>
-                  {publicKey ? <>Your address: {publicKey.toBase58()}</> : null}
-                </p>
+      <div className="container mx-auto max-w-6xl px-5">
+        <Grid
+          container
+          spacing={5}
+          justifyContent="center"
+          alignItems="center"
+          display={"flex"}
+        >
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            justifyContent="center"
+            flexDirection={"row"}
+          >
+            <Stack>
+              <Box
+                sx={{
+                  bgcolor: "aliceblue",
+                  color: "black",
+                  border: 0,
+                  borderRadius: 2,
+                  px: 2,
+                  boxShadow: 2,
+                  width: 240,
+                  height: 240,
+                }}
+              >
+                <div className="p-0 hero">
+                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
+                </div>
+                <div className="pb-3 text-md font-bold opacity-60">
+                  Extremely cheap fee
+                </div>
+              </Box>
+              <div className="p-3 text-sm opacity-80">
+                It consts only 0.5% for each payment.
               </div>
-            </div>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <h1 className="mb-5 pb-8 text-5xl">Templates:</h1>
-            <ul className="text-left leading-10">
-              <li className="mb-5">
-                <Link href="/gallery">
-                  <a className="text-4xl font-bold hover:underline">
-                    🏞 -- NFT Gallery
-                  </a>
-                </Link>
-              </li>
-              {/* <li className="mb-5">
-                <Link href="/mint">
-                  <a className="text-4xl font-bold hover:underline">
-                    🍬 -- Candy Machine Mint UI
-                  </a>
-                </Link>
-              </li> */}
-              <li>
-                <Link href="/tweeter">
-                  <a className="mb-5 text-4xl font-bold hover:underline">
-                    🐦 -- Solana Tweeter
-                  </a>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            justifyContent="center"
+            flexDirection={"row"}
+          >
+            <Stack>
+              <Box
+                sx={{
+                  bgcolor: "aliceblue",
+                  color: "black",
+                  border: 0,
+                  borderRadius: 2,
+                  px: 2,
+                  boxShadow: 2,
+                  width: 240,
+                  height: 240,
+                }}
+              >
+                <div className="p-0 hero">
+                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
+                </div>
+                <div className="pb-3 text-md font-bold opacity-60">
+                  No monthly fee
+                </div>
+              </Box>
+              <div className="p-3 text-sm opacity-80">
+                No montyly fee is chared.
+              </div>
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            justifyContent="center"
+            flexDirection={"row"}
+          >
+            <Stack>
+              <Box
+                sx={{
+                  bgcolor: "aliceblue",
+                  color: "black",
+                  border: 0,
+                  borderRadius: 2,
+                  px: 2,
+                  boxShadow: 2,
+                  width: 240,
+                  height: 240,
+                }}
+              >
+                <div className="pt-0 hero">
+                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
+                </div>
+                <div className="pb-3 text-md font-bold opacity-60">
+                  The initial cost is only 0.01 SOL
+                </div>
+              </Box>
+              <div className="p-3 text-sm opacity-80">
+                It consts only 0.01 SOL to start the service.
+              </div>
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            justifyContent="center"
+            flexDirection={"row"}
+          >
+            <Stack>
+              <Box
+                sx={{
+                  bgcolor: "aliceblue",
+                  color: "black",
+                  border: 0,
+                  borderRadius: 2,
+                  px: 2,
+                  boxShadow: 2,
+                  width: 240,
+                  height: 240,
+                }}
+              >
+                <div className="pt-0 hero">
+                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature02.png" />
+                </div>
+                <div className="pb-3 text-md font-bold opacity-60">
+                  No contract or registration
+                </div>
+              </Box>
+              <div className="p-3 text-sm opacity-80">
+                Just connect your wallet. That's all you have to start the
+                service.
+              </div>
+            </Stack>
+          </Grid>
+          <Grid
+            item
+            xs={4}
+            display="flex"
+            justifyContent="center"
+            flexDirection={"row"}
+          >
+            <Stack>
+              <Box
+                sx={{
+                  bgcolor: "aliceblue",
+                  color: "black",
+                  border: 0,
+                  borderRadius: 2,
+                  px: 2,
+                  boxShadow: 2,
+                  width: 240,
+                  height: 240,
+                }}
+              >
+                <div className="pt-0 hero">
+                  <img src="https://cdn1.iconfinder.com/data/icons/cryptocurrency-and-blockchain-banking-2/567/Blockchain_and_Crypto_-15-512.png" />
+                </div>
+                <div className="pb-3 text-md font-bold opacity-60">
+                  Transaparent transaction
+                </div>
+              </Box>
+              <div className="p-3 text-sm opacity-80">
+                All transacions are saved on the public blockchain.
+              </div>
+            </Stack>
+          </Grid>
+        </Grid>
+        <br />
+        <br />
       </div>
     </div>
   );
