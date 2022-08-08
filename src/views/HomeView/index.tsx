@@ -14,6 +14,44 @@ import Grid from "@mui/material/Grid";
 import { styled } from "@mui/material/styles";
 import { stubTrue } from "lodash";
 
+type Props = {
+  url?: string;
+  title: string;
+  description?: string;
+};
+
+export const PanelBox: FC<Props> = ({ url, title, description }) => {
+  return (
+    <Stack>
+      <Box
+        sx={{
+          bgcolor: "aliceblue",
+          color: "black",
+          border: 0,
+          borderRadius: 2,
+          px: 2,
+          boxShadow: 2,
+          width: 180,
+          height: 240,
+        }}
+      >
+        <div className="p-0 hero">
+          <img src={url} />
+        </div>
+        <div className="pb-3 text-md font-bold opacity-60">{title}</div>
+      </Box>
+      <Box
+        sx={{
+          border: 0,
+          width: 180,
+        }}
+      >
+        <div className="p-3 text-sm opacity-80">{description}</div>
+      </Box>
+    </Stack>
+  );
+};
+
 export const HomeView: FC = ({}) => {
   const { publicKey } = useWallet();
   console.log("publicKey = ", publicKey);
@@ -23,219 +61,96 @@ export const HomeView: FC = ({}) => {
 
   return (
     <div className="container mx-auto max-w-6xl px-0">
-      <div className="hero min-h-16 pb-10 pt-3">
+      <div className="hero min-h-16 pb-5">
         <div className="text-center">
-          <div className="max-w-lg">
-            <h1 className="text-3xl font-bold">
+          <div className="max-w-2xl text-2xl opacity-80">
+          Yorozuya Pay is a service that allows you to make payments using cryptocurrencies by scanning a QR code.
+            {/* <h1 className="text-3xl font-bold">
               {!publicKey ? <>Welcome to Crypto Yorozuya!</> : null}
-            </h1>
+            </h1> */}
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto max-w-6xl px-5">
+      <div className="container mx-auto max-w-6xl">
+      <div className="font-bold text-2xl opacity-80 pb-5 pl-10 text-center">Features of "Yorozuya Pay"</div>
         <Grid
           container
           spacing={5}
           justifyContent="center"
-          alignItems="center"
+          alignItems="top"
           display={"flex"}
         >
           <Grid
             item
-            xs={4}
+            md={2}
+            sm={6}
             display="flex"
             justifyContent="center"
             flexDirection={"row"}
           >
-            <Stack>
-              <Box
-                sx={{
-                  bgcolor: "aliceblue",
-                  color: "black",
-                  border: 0,
-                  borderRadius: 2,
-                  px: 2,
-                  boxShadow: 2,
-                  width: 240,
-                  height: 240,
-                }}
-              >
-                <div className="p-0 hero">
-                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
-                </div>
-                <div className="pb-3 text-md font-bold opacity-60">
-                  Extremely cheap fee
-                </div>
-              </Box>
-              <Box
-                sx={{
-                  border: 0,
-                  width: 240,
-                }}
-              >
-              <div className="p-3 text-sm opacity-80">
-                It consts only 0.5% for each payment.
-              </div>
-              </Box>
-            </Stack>
+            <PanelBox
+              url="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png"
+              title="Extremely cheap fee"
+              description="It consts only 0.5% for each payment."
+            />
           </Grid>
           <Grid
             item
-            xs={4}
+            md={2}
+            sm={6}
             display="flex"
             justifyContent="center"
             flexDirection={"row"}
           >
-            <Stack>
-              <Box
-                sx={{
-                  bgcolor: "aliceblue",
-                  color: "black",
-                  border: 0,
-                  borderRadius: 2,
-                  px: 2,
-                  boxShadow: 2,
-                  width: 240,
-                  height: 240,
-                }}
-              >
-                <div className="p-0 hero">
-                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
-                </div>
-                <div className="pb-3 text-md font-bold opacity-60">
-                  No monthly fee
-                </div>
-              </Box>
-              <Box
-                sx={{
-                  border: 0,
-                  width: 240,
-                }}
-              >
-              <div className="p-3 text-sm opacity-80">
-                No montyly fee is chared.
-              </div>
-              </Box>
-            </Stack>
+            <PanelBox
+              url="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png"
+              title="No monthly fee"
+              description="No montyly fee is chared."
+            />
           </Grid>
           <Grid
             item
-            xs={4}
+            md={2}
+            sm={6}
             display="flex"
             justifyContent="center"
             flexDirection={"row"}
           >
-            <Stack>
-              <Box
-                sx={{
-                  bgcolor: "aliceblue",
-                  color: "black",
-                  border: 0,
-                  borderRadius: 2,
-                  px: 2,
-                  boxShadow: 2,
-                  width: 240,
-                  height: 240,
-                }}
-              >
-                <div className="pt-0 hero">
-                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png" />
-                </div>
-                <div className="pb-3 text-md font-bold opacity-60">
-                  The initial cost is only 0.01 SOL
-                </div>
-              </Box>
-              <Box
-                sx={{
-                  border: 0,
-                  width: 240,
-                }}
-              >
-              <div className="p-3 text-sm opacity-80">
-                It consts only 0.01 SOL to start the service.
-              </div>
-              </Box>
-            </Stack>
+            <PanelBox
+              url="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature03.png"
+              title="The initial cost is only 0.01 SOL"
+              description="It consts only 0.01 SOL to start the service."
+            />
           </Grid>
           <Grid
             item
-            xs={4}
+            md={2}
+            sm={6}
             display="flex"
             justifyContent="center"
             flexDirection={"row"}
           >
-            <Stack>
-              <Box
-                sx={{
-                  bgcolor: "aliceblue",
-                  color: "black",
-                  border: 0,
-                  borderRadius: 2,
-                  px: 2,
-                  boxShadow: 2,
-                  width: 240,
-                  height: 240,
-                }}
-              >
-                <div className="pt-0 hero">
-                  <img src="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature02.png" />
-                </div>
-                <div className="pb-3 text-md font-bold opacity-60">
-                  No contract or registration
-                </div>
-              </Box>
-              <Box
-                sx={{
-                  border: 0,
-                  width: 240,
-                }}
-              >
-              <div className="p-3 text-sm opacity-80">
-                Just connect your wallet. That's all you have to start the
-                service.
-              </div>
-              </Box>
-            </Stack>
+            <PanelBox
+              url="https://www2.cloud-pay.jp/contents/themes/cloudpay-default/assets/images/feature02.png"
+              title="No contract or registration"
+              description=" Just connect your wallet. That's all you have to start the
+              service."
+            />
           </Grid>
           <Grid
             item
-            xs={4}
+            md={2}
+            sm={6}
             display="flex"
             justifyContent="center"
             flexDirection={"row"}
           >
-            <Stack>
-              <Box
-                sx={{
-                  bgcolor: "aliceblue",
-                  color: "black",
-                  border: 0,
-                  borderRadius: 2,
-                  px: 2,
-                  boxShadow: 2,
-                  width: 240,
-                  height: 240,
-                }}
-              >
-                <div className="pt-0 hero">
-                  <img src="https://cdn1.iconfinder.com/data/icons/cryptocurrency-and-blockchain-banking-2/567/Blockchain_and_Crypto_-15-512.png" />
-                </div>
-                <div className="pb-3 text-md font-bold opacity-60">
-                  Transaparent transaction
-                </div>
-              </Box>
-              <Box
-                sx={{
-                  border: 0,
-                  width: 240,
-                }}
-              >
-              <div className="p-3 text-sm opacity-80">
-                All transacions are saved on the public blockchain.
-              </div>
-              </Box>
-            </Stack>
+            <PanelBox
+              url="https://cdn1.iconfinder.com/data/icons/cryptocurrency-and-blockchain-banking-2/567/Blockchain_and_Crypto_-15-512.png"
+              title="NTransaparent transaction"
+              description="All transacions are saved on the public blockchain."
+            />
           </Grid>
         </Grid>
         <br />
