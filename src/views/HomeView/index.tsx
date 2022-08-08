@@ -68,9 +68,16 @@ export const HomeView: FC = ({}) => {
                   Extremely cheap fee
                 </div>
               </Box>
+              <Box
+                sx={{
+                  border: 0,
+                  width: 240,
+                }}
+              >
               <div className="p-3 text-sm opacity-80">
                 It consts only 0.5% for each payment.
               </div>
+              </Box>
             </Stack>
           </Grid>
           <Grid
@@ -100,9 +107,16 @@ export const HomeView: FC = ({}) => {
                   No monthly fee
                 </div>
               </Box>
+              <Box
+                sx={{
+                  border: 0,
+                  width: 240,
+                }}
+              >
               <div className="p-3 text-sm opacity-80">
                 No montyly fee is chared.
               </div>
+              </Box>
             </Stack>
           </Grid>
           <Grid
@@ -132,9 +146,16 @@ export const HomeView: FC = ({}) => {
                   The initial cost is only 0.01 SOL
                 </div>
               </Box>
+              <Box
+                sx={{
+                  border: 0,
+                  width: 240,
+                }}
+              >
               <div className="p-3 text-sm opacity-80">
                 It consts only 0.01 SOL to start the service.
               </div>
+              </Box>
             </Stack>
           </Grid>
           <Grid
@@ -164,10 +185,17 @@ export const HomeView: FC = ({}) => {
                   No contract or registration
                 </div>
               </Box>
+              <Box
+                sx={{
+                  border: 0,
+                  width: 240,
+                }}
+              >
               <div className="p-3 text-sm opacity-80">
                 Just connect your wallet. That's all you have to start the
                 service.
               </div>
+              </Box>
             </Stack>
           </Grid>
           <Grid
@@ -197,9 +225,16 @@ export const HomeView: FC = ({}) => {
                   Transaparent transaction
                 </div>
               </Box>
+              <Box
+                sx={{
+                  border: 0,
+                  width: 240,
+                }}
+              >
               <div className="p-3 text-sm opacity-80">
                 All transacions are saved on the public blockchain.
               </div>
+              </Box>
             </Stack>
           </Grid>
         </Grid>
