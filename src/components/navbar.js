@@ -16,8 +16,8 @@ export default function Navbar() {
           </div>
           <div className="text-left px-2 mr-5">
             <span className="text-lg font-bold">
-              <Link href="/transfer">
-                <a>Payment Transfer</a>
+              <Link href="/terminal">
+                <a>Payment Terminal</a>
               </Link>
             </span>
           </div>

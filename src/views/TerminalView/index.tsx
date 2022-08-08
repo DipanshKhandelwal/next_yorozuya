@@ -14,7 +14,6 @@ import {
   NumericTextField,
   SelectTextField,
   NumericInput,
-  MobileInput,
 } from "components";
 
 import * as anchor from "@project-serum/anchor";
@@ -26,7 +25,7 @@ const endpoint = "https://explorer-api.devnet.solana.com";
 
 const connection = new anchor.web3.Connection(endpoint);
 
-export const TransferView: FC = ({}) => {
+export const TerminalView: FC = ({}) => {
   const [isAirDropped, setIsAirDropped] = useState(false);
   const wallet = useAnchorWallet();
 
@@ -59,11 +58,11 @@ export const TransferView: FC = ({}) => {
     <div className="container mx-auto max-w-6xl p-8 2xl:px-0">
       <div className={styles.container}>
         <div>
-          {!wallet ? (
+          {/* {!wallet ? (
             <SelectAndConnectWalletButton onUseWalletClick={() => {}} />
           ) : (
-            <TransferScreen />
-          )}
+
+          )} */}
         </div>
         <div className="mr-4">Need some SOL on test wallet?</div>
         <div className="mr-4">
@@ -105,7 +104,4 @@ export const TransferView: FC = ({}) => {
     </div>
   );
 };
-
-const TransferScreen = () => {
-  return <p>TransferScreen</p>;
-};
+ 

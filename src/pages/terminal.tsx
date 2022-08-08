@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { TransferView } from "../views";
+import { TerminalView } from "../views";
 
 const Home: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Transfer coins</title>
-        <meta name="description" content="Transfer coins" />
+        <title>Payment Terminal</title>
+        <meta name="description" content="Payment Terminal" />
       </Head>
-      <TransferView />
+      <TerminalView />
     </div>
   );
 };

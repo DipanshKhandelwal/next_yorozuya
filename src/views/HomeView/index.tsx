@@ -73,7 +73,7 @@ export const HomeView: FC = ({}) => {
       </div>
 
       <div className="container mx-auto max-w-6xl">
-      <div className="font-bold text-2xl opacity-80 pb-5 pl-10 text-center">Features of "Yorozuya Pay"</div>
+      <div className="font-bold text-2xl opacity-80 pb-8 pt-3 text-center">Features of "Yorozuya Pay"</div>
         <Grid
           container
           spacing={5}
