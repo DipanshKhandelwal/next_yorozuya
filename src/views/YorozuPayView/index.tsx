@@ -29,6 +29,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { bgcolor } from "@mui/system";
+import { blueGrey } from "@mui/material/colors";
 
 const endpoint = "https://explorer-api.devnet.solana.com";
 const connection = new anchor.web3.Connection(endpoint);
@@ -72,8 +74,6 @@ export const YorozuPayView: FC = ({}) => {
 
   const [value, setValue] = useState(0);
 
-  const a = getExchangeRate();
-
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
@@ -81,7 +81,7 @@ export const YorozuPayView: FC = ({}) => {
   return (
     <div className="container mx-auto max-w-6xl px-0">
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -211,19 +211,22 @@ const ExecutPaymentScreen = () => {
 };
 
 const RateConversionScreen = () => {
+  const rate = getExchangeRate();
+  console.log(rate);
+
   return (
     <div className="p-5 flex">
       <Stack spacing={2}>
-      <div className="">Actual billing</div>
+      <div className="text-blue-600">Actual billing</div>
       <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
       <div id="sol-amount" className="font-bold text-xl opacity-75">0.0123</div>
       <div className="pl-2">SOL</div>
       </Stack>
       <hr/>
-      <div className="">Current exchange rate</div>
+      <div className="text-blue-600">Current exchange rate</div>
       <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
-      <div id="current-rate" className="font-bold text-xl opacity-75">40.123</div>
-      <div className="pl-2">JPY/SOL</div>
+      <div id="current-rate" className="font-bold text-xl opacity-75">{rate}</div>
+      <div className="pl-2">SOL/JPY</div>
       </Stack>
       </Stack>
     </div>
