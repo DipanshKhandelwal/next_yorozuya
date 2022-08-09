@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Stack from "@mui/material/Stack";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
 import getExchangeRate from "../../lib/getExchangeRate";
 
@@ -52,11 +52,7 @@ function TabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box>{children}</Box>}
     </div>
   );
 }
@@ -81,7 +77,7 @@ export const YorozuPayView: FC = ({}) => {
   return (
     <div className="container mx-auto max-w-6xl px-0">
       <Box sx={{ width: "100%" }}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider"}}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
             value={value}
             onChange={handleChange}
@@ -89,7 +85,6 @@ export const YorozuPayView: FC = ({}) => {
           >
             <Tab label="Payment Terminal" {...a11yProps(0)} />
             <Tab label="Yorozu Account" {...a11yProps(1)} />
-            <Tab label="Stake Solana" {...a11yProps(2)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -97,9 +92,6 @@ export const YorozuPayView: FC = ({}) => {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <AccountScreen />
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          <StakeScreen />
         </TabPanel>
       </Box>
     </div>
@@ -173,7 +165,14 @@ const TerminalScreen = () => {
 };
 
 const QrDisplayScreen = () => {
-  return <div className="">Please enter the payment amount in Japanese yen and press the execute button.<br/><br/>A QR code is displayed here.</div>;
+  return (
+    <div className="">
+      Please enter the payment amount in Japanese yen and press the execute
+      button.
+      <br />
+      <br />A QR code is displayed here.
+    </div>
+  );
 };
 
 const CancelButton = () => {
@@ -215,28 +214,124 @@ const RateConversionScreen = () => {
   console.log(rate);
 
   return (
-    <div className="p-5 flex">
-      <Stack spacing={2}>
-      <div className="font-bold text-gray-600">Actual billing</div>
-      <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
-      <div id="sol-amount" className="font-bold text-xl text-red-700 opacity-75">0.0123</div>
-      <div className="pl-2">SOL</div>
-      </Stack>
-      <hr/>
-      <div className="font-bold text-gray-600">Current exchange rate</div>
-      <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
-      <div className="pr-2">1SOL =</div>
-      <div id="current-rate" className="font-bold text-blue-700 text-xl opacity-75">{rate}</div>
-      <div className="pl-2">JPY</div>
-      </Stack>
-      </Stack>
-    </div>
+    // <div className="p-5 flex">
+      <Box
+        sx={{
+          bgcolor: "ghostwhite",
+          color: "black",
+          border: 0,
+          borderRadius: 2,
+          px: 2,
+          boxShadow: 2,
+        }}
+      >
+        <Stack spacing={2}>
+          <div className="text-gray-600 pt-3">Actual billing</div>
+          <Stack
+            direction="row"
+            justifyContent="left"
+            alignItems="center"
+            display="flex"
+          >
+            <div
+              id="sol-amount"
+              className="font-bold text-xl text-red-700 opacity-75"
+            >
+              0.0123
+            </div>
+            <div className="pl-2">SOL</div>
+          </Stack>
+          <hr />
+          <div className="text-gray-600">Current exchange rate</div>
+          <Stack
+            direction="row"
+            justifyContent="left"
+            alignItems="center"
+            display="flex"
+          >
+            <div className="pr-2">1SOL =</div>
+            <div
+              id="current-rate"
+              className="font-bold text-blue-700 text-xl opacity-75"
+            >
+              {rate}
+            </div>
+            <div className="pl-2">JPY</div>
+          </Stack>
+        </Stack>
+      </Box>
+    // </div>
   );
 };
 const AccountScreen = () => {
-  return <div>Account Screen</div>;
-};
+  return (
+    <Box
+      sx={{
+        bgcolor: "aliceblue",
+        color: "black",
+        border: 0,
+        borderRadius: 2,
+        px: 2,
+        boxShadow: 2,
+        width: 420,
+        // height: 200,
+      }}
+    >
+      <Grid
+        container
+        spacing={3}
+        justifyContent="center"
+        alignItems="center"
+        display={"flex"}
+        flexDirection={"row"}
+        alignContent="center"
+      >
+        <Grid
+          item
+          xs={4}
+          display="flex"
+          justifyContent="start"
+          alignItems="center"
+          alignContent="center"
+        >
+          <Stack direction="row" spacing={1}>
+            <img src="/solana-dark.png" width={32} />
+            <div>SOL</div>{" "}
+          </Stack>
+        </Grid>
+        <Grid item xs={8}>
+          <Stack direction="row" spacing={1}>
+            <div>Balance</div>
+            <div className="pl-3">0.00001</div>{" "}
+          </Stack>
+        </Grid>
+        <Grid item xs={12}>
+          <hr />
+        </Grid>
 
-const StakeScreen = () => {
-  return <div>Stake Screen</div>;
+        <Grid
+          item
+          xs={4}
+          display="flex"
+          justifyContent="start"
+          alignItems="center"
+          alignContent="center"
+        >
+          <Stack direction="row" spacing={1}>
+            <img src="/mSOL.svg" width={32} />
+            <div>mSOL</div>{" "}
+          </Stack>
+        </Grid>
+        <Grid item xs={8}>
+          <Stack direction="row" spacing={1}>
+            <div>Balance</div>
+            <div className="pl-3">0.00001</div>{" "}
+          </Stack>
+        </Grid>
+        <Grid item xs={12}>
+          <hr />
+        </Grid>
+      </Grid>
+    </Box>
+  );
 };
