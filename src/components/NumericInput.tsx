@@ -10,7 +10,7 @@ import { NumericTextField } from "components";
 
 type Props = {
   layoutName?: string;
-  id: String,
+  id: string,
 };
 
 export const NumericInput: FC<Props> = ({ layoutName = "default", id }) => {
@@ -41,7 +41,7 @@ export const NumericInput: FC<Props> = ({ layoutName = "default", id }) => {
           backgroundColor: "dark",
         }}
       >
-        <TextField className="text-3xl font-bold"
+        <TextField className="text-3xl font-bold" 
             autoComplete="off" 
             id={id}
             required
