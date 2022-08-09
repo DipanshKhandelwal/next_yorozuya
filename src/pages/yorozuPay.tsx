@@ -1,15 +1,15 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { TerminalView } from "../views";
+import { YorozuPayView } from "../views";
 
 const Home: NextPage = (props) => {
   return (
     <div>
       <Head>
-        <title>Payment Terminal</title>
-        <meta name="description" content="Payment Terminal" />
+        <title>Yorozu Pay</title>
+        <meta name="description" content="Yorozu Pay" />
       </Head>
-      <TerminalView />
+      <YorozuPayView />
     </div>
   );
 };

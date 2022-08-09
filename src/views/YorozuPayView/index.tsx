@@ -62,7 +62,7 @@ function a11yProps(index: number) {
   };
 }
 
-export const TerminalView: FC = ({}) => {
+export const YorozuPayView: FC = ({}) => {
   const [isAirDropped, setIsAirDropped] = useState(false);
   const wallet = useAnchorWallet();
 
@@ -83,16 +83,34 @@ export const TerminalView: FC = ({}) => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Payment Terminal
+        <TerminalScreen/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Yorozu Account
+        <AccountScreen/>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Stake Solana
+        <StakeScreen/>
       </TabPanel>
     </Box>
     </div>
   );
 };
+
+const TerminalScreen = () => {
+  return(
+    <div>Terminal Screen</div>
+  )
+}
+
+const AccountScreen = () => {
+  return(
+    <div>Account Screen</div>
+  )
+}
+
+const StakeScreen = () => {
+  return(
+    <div>Stake Screen</div>
+  )
+}
  
