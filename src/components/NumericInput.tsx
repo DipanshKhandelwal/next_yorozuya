@@ -41,6 +41,13 @@ export const NumericInput: FC<Props> = ({ layoutName = "default", id }) => {
           backgroundColor: "dark",
         }}
       >
+        <Box
+        sx={{
+          bgcolor: "aliceblue",
+          color: "black",
+          border: 0,
+          borderRadius: 2,
+        }}>
         <TextField className="text-3xl font-bold" 
             autoComplete="off" 
             id={id}
@@ -50,6 +57,7 @@ export const NumericInput: FC<Props> = ({ layoutName = "default", id }) => {
             size="medium"
             inputProps={{min: 0, style: { textAlign: 'right' }}}
           />
+          </Box>
         <Keyboard
           onChange={onChange}
           onKeyPress={onKeyPress}

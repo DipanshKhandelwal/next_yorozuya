@@ -180,7 +180,7 @@ const CancelButton = () => {
   return (
     <div>
       <button
-        className="btn btn-secondary rounded-half normal-case	px-16"
+        className="btn btn-primary rounded-half normal-case	px-16"
         onClick={() => {}}
       >
         Cancel
