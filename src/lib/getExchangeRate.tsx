@@ -14,57 +14,46 @@ const KRAKEN_DATA_LABELS = Object.freeze({
   o: "Today Opening Price"
 });
 
+async function getData(symbol: string): Promise<number>  {
+  const res = await fetch(`${KRAKEN_API_URL}?pair=${symbol.trim()}`);
+  const { result } = await res.json();
+
+  if (result) {
+    const data = Object.keys(result).reduce(
+        (pv, cv) => ({
+            ...result[cv]
+        }), {a: "Ask", b: "Bid"}
+    );
+    return (parseFloat(data.a[0]) + parseFloat(data.b[0])) / 2;
+  }
+  return 0;
+}
+
 const useFindTicker = () => {
-  // Holds value for search form
-  const [symbol, setSymbol] = useState("USDJPY");
-
-  // Holds data value of cryptocurrency market data
-  const [data, setData] = useState({a: "Ask", b: "Bid"});
-
-  // Holds error messages from KRAKEN API
-  const [error, setError] = useState(null);
+  const [data, setData] = useState(0);
 
   return {
     data,
-    error,
-    find: async (): Promise<number> => {
+    find: async () => {
       try {
-
-        // Fetch ticker data from Kraken API
-        const res = await fetch(`${KRAKEN_API_URL}?pair=${symbol.trim()}`);
-        const { result } = await res.json();
-
-
-        console.log("result = ", result);
-
-        if (result) {
-            const x = Object.keys(result).reduce(
-                (pv, cv) => ({
-                    ...result[cv]
-                }), {a: "Ask", b: "Bid"}
-            );
-            setData(x);
-            console.log(data.a[0]);
-            console.log(data.b[0]);
-            const rate = (parseFloat(data.a[0]) + parseFloat(data.b[0])) / 2;
-            console.log(rate);
-
-        }
-        return 0;
+        const rate1 = await getData("SOLUSD");
+        const rate2 = await getData("USDJPY");
+  
+        const rate = rate1 * rate2;
+        setData(rate);
       } catch (e) {
         console.error(e);
       }
-      return 0;
     }
   };
 };
 
-export default function getExchangeRate() : number  {
-  const { data, error, find } = useFindTicker();
+export default function getExchangeRate(symbol: string = "JPY/SOL") : number  {
+  if (symbol != "JPY/SOL") {
+    return 0;
+  }
 
-  const ret = find();
-  
-  console.log("getExchangeRate");
-
-  return 0;
+  const { data, find } = useFindTicker();
+  find();
+  return Math.round(data);
 };
