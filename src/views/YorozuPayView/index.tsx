@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Stack from "@mui/material/Stack";
+import Button from '@mui/material/Button';
 
 import {
   Loader,
@@ -167,14 +168,14 @@ const TerminalScreen = () => {
 };
 
 const QrDisplayScreen = () => {
-  return <div className="">A QR code is displayed here.</div>;
+  return <div className="">Please enter the payment amount in Japanese yen and press the execute button.<br/><br/>A QR code is displayed here.</div>;
 };
 
 const CancelButton = () => {
   return (
     <div>
       <button
-        className="btn btn-secondary rounded-full normal-case	px-16"
+        className="btn btn-secondary rounded-half normal-case	px-16"
         onClick={() => {}}
       >
         Cancel
@@ -187,7 +188,7 @@ const ExecuteButton = () => {
   return (
     <div>
       <button
-        className="btn btn-secondary rounded-full normal-case	px-16"
+        className="btn btn-secondary rounded-half normal-case	px-16"
         onClick={() => {}}
       >
         Execute
@@ -217,7 +218,7 @@ const RateConversionScreen = () => {
       <div className="font-bold">Current exchange rate</div>
       <Stack direction="row" justifyContent="center" alignItems="center" display="flex">
       <div id="current-rate" className="font-bold text-xl opacity-75">40.123</div>
-      <div className="pl-2">USD/SOL</div>
+      <div className="pl-2">JPY/SOL</div>
       </Stack>
       </Stack>
     </div>
