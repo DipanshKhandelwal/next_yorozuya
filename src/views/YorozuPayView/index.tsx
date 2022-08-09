@@ -10,6 +10,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Stack from "@mui/material/Stack";
 import Button from '@mui/material/Button';
 import { useRouter } from "next/router";
+import getExchangeRate from "../../lib/getExchangeRate";
 
 import {
   Loader,
@@ -50,8 +51,8 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box>
+          {children}
         </Box>
       )}
     </div>
@@ -70,6 +71,8 @@ export const YorozuPayView: FC = ({}) => {
   const wallet = useAnchorWallet();
 
   const [value, setValue] = useState(0);
+
+  const a = getExchangeRate();
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -108,6 +111,7 @@ const TerminalScreen = () => {
     <Grid
       container
       spacing={5}
+      padding={3}
       justifyContent="center"
       alignItems="top"
       display={"flex"}
@@ -210,14 +214,14 @@ const RateConversionScreen = () => {
   return (
     <div className="p-5 flex">
       <Stack spacing={2}>
-      <div className="font-bold">Actual accmount to chage</div>
-      <Stack direction="row" justifyContent="center" alignItems="center" display="flex">
+      <div className="">Actual billing</div>
+      <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
       <div id="sol-amount" className="font-bold text-xl opacity-75">0.0123</div>
       <div className="pl-2">SOL</div>
       </Stack>
       <hr/>
-      <div className="font-bold">Current exchange rate</div>
-      <Stack direction="row" justifyContent="center" alignItems="center" display="flex">
+      <div className="">Current exchange rate</div>
+      <Stack direction="row" justifyContent="left" alignItems="center" display="flex">
       <div id="current-rate" className="font-bold text-xl opacity-75">40.123</div>
       <div className="pl-2">JPY/SOL</div>
       </Stack>
