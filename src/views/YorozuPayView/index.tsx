@@ -226,7 +226,7 @@ const RateConversionScreen = () => {
         }}
       >
         <Stack spacing={2}>
-          <div className="text-gray-600 pt-3">Actual billing</div>
+          <div className="font-bold text-gray-600 pt-3">Actual billing</div>
           <Stack
             direction="row"
             justifyContent="left"
@@ -239,24 +239,24 @@ const RateConversionScreen = () => {
             >
               0.0123
             </div>
-            <div className="pl-2">SOL</div>
+            <div className="pl-2 text-gray-600">SOL</div>
           </Stack>
           <hr />
-          <div className="text-gray-600">Current exchange rate</div>
+          <div className="font-bold text-gray-600">Current exchange rate</div>
           <Stack
             direction="row"
             justifyContent="left"
             alignItems="center"
             display="flex"
           >
-            <div className="pr-2">1SOL =</div>
+            <div className="pr-2 text-gray-600">1SOL =</div>
             <div
               id="current-rate"
               className="font-bold text-blue-700 text-xl opacity-75"
             >
               {rate}
             </div>
-            <div className="pl-2">JPY</div>
+            <div className="pl-2 text-gray-600">JPY</div>
           </Stack>
         </Stack>
       </Box>
