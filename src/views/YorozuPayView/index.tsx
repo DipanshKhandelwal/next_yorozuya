@@ -7,6 +7,7 @@ import { LAMPORTS_PER_SOL } from "@solana/web3.js";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
+import Stack from "@mui/material/Stack";
 
 import {
   Loader,
@@ -116,7 +117,16 @@ const TerminalScreen = () => {
         justifyContent="center"
         flexDirection={"row"}
       >
-        <QrDisplayScreen/>
+        <QrDisplayScreen />
+      </Grid>
+      <Grid
+        item
+        xs={4}
+        display="flex"
+        justifyContent="center"
+        flexDirection={"row"}
+      >
+        <ExecutPaymentScreen />
       </Grid>
       <Grid
         item
@@ -125,7 +135,25 @@ const TerminalScreen = () => {
         justifyContent="center"
         flexDirection={"row"}
       >
-        <ExecutPaymentScreen/>
+        <RateConversionScreen />
+      </Grid>
+      <Grid
+        item
+        xs={5}
+        display="flex"
+        justifyContent="center"
+        flexDirection={"row"}
+      >
+        <CancelButton />
+      </Grid>
+      <Grid
+        item
+        xs={4}
+        display="flex"
+        justifyContent="center"
+        flexDirection={"row"}
+      >
+        <ExecuteButton />
       </Grid>
       <Grid
         item
@@ -133,25 +161,68 @@ const TerminalScreen = () => {
         display="flex"
         justifyContent="center"
         flexDirection={"row"}
-      >
-        <RateConversionScreen/>
-      </Grid>
+      ></Grid>
     </Grid>
   );
 };
 
 const QrDisplayScreen = () => {
-  return <div>A QR code is displayed here.</div>;
-}
+  return <div className="">A QR code is displayed here.</div>;
+};
+
+const CancelButton = () => {
+  return (
+    <div>
+      <button
+        className="btn btn-secondary rounded-full normal-case	px-16"
+        onClick={() => {}}
+      >
+        Cancel
+      </button>
+    </div>
+  );
+};
+
+const ExecuteButton = () => {
+  return (
+    <div>
+      <button
+        className="btn btn-secondary rounded-full normal-case	px-16"
+        onClick={() => {}}
+      >
+        Execute
+      </button>
+    </div>
+  );
+};
 
 const ExecutPaymentScreen = () => {
-  return <div>Please enter an ammount by Yen.</div>;
-}
+  return (
+    <div className="">
+      <NumericInput />
+    </div>
+  );
+};
 
 const RateConversionScreen = () => {
-  return <div>Actual ammount to be payed by SOL.</div>;
-}
-
+  return (
+    <div className="p-5 flex">
+      <Stack spacing={2}>
+      <div className="font-bold">Actual accmount to chage</div>
+      <Stack direction="row" justifyContent="center" alignItems="center" display="flex">
+      <div id="sol-amount" className="font-bold text-xl opacity-75">0.0123</div>
+      <div className="pl-2">SOL</div>
+      </Stack>
+      <hr/>
+      <div className="font-bold">Current exchange rate</div>
+      <Stack direction="row" justifyContent="center" alignItems="center" display="flex">
+      <div id="current-rate" className="font-bold text-xl opacity-75">40.123</div>
+      <div className="pl-2">USD/SOL</div>
+      </Stack>
+      </Stack>
+    </div>
+  );
+};
 const AccountScreen = () => {
   return <div>Account Screen</div>;
 };
