@@ -10,9 +10,10 @@ import { NumericTextField } from "components";
 
 type Props = {
   layoutName?: string;
+  id: String,
 };
 
-export const NumericInput: FC<Props> = ({ layoutName = "default" }) => {
+export const NumericInput: FC<Props> = ({ layoutName = "default", id }) => {
   const [input, setInput] = useState("￥0");
   const [currency, setCurrency] = useState("￥0");
 
@@ -42,7 +43,7 @@ export const NumericInput: FC<Props> = ({ layoutName = "default" }) => {
       >
         <TextField className="text-3xl font-bold"
             autoComplete="off" 
-            id="yen-amount"
+            id={id}
             required
             value={currency}
             fullWidth

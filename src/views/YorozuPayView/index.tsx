@@ -9,6 +9,7 @@ import Grid from "@mui/material/Grid";
 import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Stack from "@mui/material/Stack";
 import Button from '@mui/material/Button';
+import { useRouter } from "next/router";
 
 import {
   Loader,
@@ -200,7 +201,7 @@ const ExecuteButton = () => {
 const ExecutPaymentScreen = () => {
   return (
     <div className="">
-      <NumericInput />
+      <NumericInput id="yen-amount" />
     </div>
   );
 };
