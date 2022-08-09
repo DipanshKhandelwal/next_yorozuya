@@ -27,23 +27,13 @@ const useFindTicker = () => {
   return {
     data,
     error,
-    find: async () => {
+    find: async (): Promise<number> => {
       try {
-        // No need to make a request if symbol value is empty.
-        if (symbol.trim().length < 1) {
-          console.log("Symbol is empty");
-          return;
-        }
 
         // Fetch ticker data from Kraken API
         const res = await fetch(`${KRAKEN_API_URL}?pair=${symbol.trim()}`);
-        const { error, result } = await res.json();
+        const { result } = await res.json();
 
-        // IF any errors, set error to state
-        if (error.length > 0) {
-          setError(error);
-          return;
-        }
 
         console.log("result = ", result);
 
@@ -60,26 +50,11 @@ const useFindTicker = () => {
             console.log(rate);
 
         }
-
-        // // Set ticker data to state
-        // setData(
-        //   Object.keys(result).reduce(
-        //     (pv, cv) => ({
-        //       ...result[cv]
-        //     }),
-        //     {}
-        //   )
-        // );
-        // if (data) {
-        //   console.log(data);
-        //   console.log(data.b[0]);
-        //   const rate = (parseFloat(data.a[0]) + parseFloat(data.b[0])) / 2;
-        //   console.log(rate);
-        // }
-        return;
+        return 0;
       } catch (e) {
         console.error(e);
       }
+      return 0;
     }
   };
 };
@@ -87,7 +62,7 @@ const useFindTicker = () => {
 export default function getExchangeRate() : number  {
   const { data, error, find } = useFindTicker();
 
-  find();
+  const ret = find();
   
   console.log("getExchangeRate");
 
