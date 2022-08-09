@@ -40,18 +40,28 @@ const feeRows = [
 const gasRows = [
   createData(
     "Create a Yorozu account",
-    "0.000005 SOL",
+    "≒ 0.000005 SOL",
     "Payed by the merchant"
   ),
   createData(
     "Withdraw",
-    "0.000005 SOL",
+    "≒ 0.000005 SOL",
     "Payed by the merchant"
   ),
   createData(
     "Payment",
-    "0.000005 SOL",
+    "≒ 0.000005 SOL",
     "Payed by the buyer"
+  ),
+  createData(
+    "Stake SOL",
+    "≒ 0.000005 SOL",
+    "Payed by the account owner"
+  ),
+  createData(
+    "Unstake SOL",
+    "≒ 0.000005 SOL",
+    "Payed by the account owner"
   ),
 ];
 

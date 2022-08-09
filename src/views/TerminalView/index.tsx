@@ -21,86 +21,77 @@ import * as anchor from "@project-serum/anchor";
 import { SolanaLogo } from "components";
 import styles from "./index.module.css";
 
-const endpoint = "https://explorer-api.devnet.solana.com";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
 
+const endpoint = "https://explorer-api.devnet.solana.com";
 const connection = new anchor.web3.Connection(endpoint);
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function TabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  };
+}
 
 export const TerminalView: FC = ({}) => {
   const [isAirDropped, setIsAirDropped] = useState(false);
   const wallet = useAnchorWallet();
 
-  const airdropToWallet = async () => {
-    if (wallet) {
-      setIsAirDropped(false);
+  const [value, setValue] = useState(0);
 
-      try {
-        const airdropSignature = await connection.requestAirdrop(
-          wallet.publicKey,
-          2 * LAMPORTS_PER_SOL
-        );
-
-        const latestBlockHash = await connection.getLatestBlockhash();
-
-        await connection.confirmTransaction({
-          blockhash: latestBlockHash.blockhash,
-          lastValidBlockHeight: latestBlockHash.lastValidBlockHeight,
-          signature: airdropSignature,
-        });
-      } catch (error) {
-        console.error(error);
-      }
-
-      setIsAirDropped(true);
-    }
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
 
   return (
-    <div className="container mx-auto max-w-6xl p-8 2xl:px-0">
-      <div className={styles.container}>
-        <div>
-          {/* {!wallet ? (
-            <SelectAndConnectWalletButton onUseWalletClick={() => {}} />
-          ) : (
-
-          )} */}
-        </div>
-        <div className="mr-4">Need some SOL on test wallet?</div>
-        <div className="mr-4">
-          <button
-            className="btn btn-primary normal-case btn-xs"
-            onClick={airdropToWallet}
-          >
-            Airdrop 1 SOL
-          </button>
-          {isAirDropped ? <div className="opacity-50">Sent!</div> : null}
-        </div>
-      </div>
-
-      <div className="m-8">
-        {/* <SelectTextField />
-        <NumericTextField /> */}
-
-        <Grid container direction="row" justifyContent="right" rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={4}>
-            1
-          </Grid>
-          <Grid item xs={4}>
-            2
-          </Grid>
-          <Grid item xs={4}>
-            3
-          </Grid>
-          <Grid item xs={4}>
-          4
-          </Grid>
-          <Grid item xs={4}>
-          5
-          </Grid>
-          <Grid item xs={4}>
-          6
-          </Grid>
-        </Grid>
-      </div>
+    <div className="container mx-auto max-w-6xl px-0">
+    <Box sx={{ width: '100%' }}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+          <Tab label="Payment Terminal" {...a11yProps(0)} />
+          <Tab label="Yorozu Account" {...a11yProps(1)} />
+          <Tab label="Stake Solana" {...a11yProps(2)} />
+        </Tabs>
+      </Box>
+      <TabPanel value={value} index={0}>
+        Payment Terminal
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        Yorozu Account
+      </TabPanel>
+      <TabPanel value={value} index={2}>
+        Stake Solana
+      </TabPanel>
+    </Box>
     </div>
   );
 };
