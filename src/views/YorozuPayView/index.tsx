@@ -10,7 +10,7 @@ import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { useRouter } from "next/router";
-import getExchangeRate from "../../lib/getExchangeRate";
+import getExchangeRate from "../../lib/kraken";
 
 import {
   Loader,
