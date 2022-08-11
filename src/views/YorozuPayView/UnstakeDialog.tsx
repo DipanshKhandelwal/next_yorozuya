@@ -38,8 +38,8 @@ export const UnstakeDialog = () => {
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Please use this icon.
-            <img src="/mSOL.svg" width={32} />
+          Please use this icon for SOL<img src="/solana-dark.png" width={32} />
+            And this for mSOL<img src="/mSOL.svg" width={32} />
           </Typography>
         </DialogContent>
         <DialogActions>
