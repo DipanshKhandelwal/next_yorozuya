@@ -8,6 +8,7 @@ import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
 import { BootstrapDialog, BootstrapDialogTitle } from "./BootstrapDialog";
 import { updateAccountName } from "lib/yorozu";
+import { isNumeric } from "lib/numeric";
 
 export const UpdateDialog = () => {
   const [open, setOpen] = React.useState(false);
