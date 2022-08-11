@@ -29,7 +29,7 @@ const currencies = [
   },
 ];
 
-export const SelectTextFields: FC<Props> = ({ label = "Token"}) => {
+export const SelectTextField: FC<Props> = ({ label = "Token"}) => {
   const [currency, setCurrency] = useState("EUR");
   
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

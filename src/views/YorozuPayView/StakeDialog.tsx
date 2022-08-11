@@ -7,9 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
 import { BootstrapDialog, BootstrapDialogTitle } from "./BootstrapDialog";
-import { withdraw } from "lib/yorozu";
+import { stake } from "lib/marinade";
 
-export const WithdrawDialog = () => {
+export const StakeDialog = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,7 +22,7 @@ export const WithdrawDialog = () => {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Withdraw SOL
+        Stake
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -33,7 +33,7 @@ export const WithdrawDialog = () => {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Withdrawal
+          Stake SOL
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
@@ -43,7 +43,7 @@ export const WithdrawDialog = () => {
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={() => {}}>
-            Withdraw
+            Stake
           </Button>
         </DialogActions>
       </BootstrapDialog>

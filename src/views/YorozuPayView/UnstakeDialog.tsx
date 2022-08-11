@@ -7,9 +7,9 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
 import { BootstrapDialog, BootstrapDialogTitle } from "./BootstrapDialog";
-import { withdraw } from "lib/yorozu";
+import { stake } from "lib/marinade";
 
-export const WithdrawDialog = () => {
+export const UnstakeDialog = () => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,7 +22,7 @@ export const WithdrawDialog = () => {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Withdraw SOL
+        Unstake
       </Button>
       <BootstrapDialog
         onClose={handleClose}
@@ -33,17 +33,17 @@ export const WithdrawDialog = () => {
           id="customized-dialog-title"
           onClose={handleClose}
         >
-          Withdrawal
+          Unstake SOL
         </BootstrapDialogTitle>
         <DialogContent dividers>
           <Typography gutterBottom>
             Please use this icon.
-            <img src="/solana-dark.png" width={32} />
+            <img src="/mSOL.svg" width={32} />
           </Typography>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={() => {}}>
-            Withdraw
+            Unstake
           </Button>
         </DialogActions>
       </BootstrapDialog>

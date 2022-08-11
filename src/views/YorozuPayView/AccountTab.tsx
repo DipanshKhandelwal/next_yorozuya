@@ -11,7 +11,7 @@ import { getExchangeRate } from "../../lib/kraken";
 
 import {
   Loader,
-  SelectAndConnectWalletButton ,
+  SelectAndConnectWalletButton,
   NumericTextField,
   SelectTextField,
   NumericInput,
@@ -27,18 +27,22 @@ import Box from "@mui/material/Box";
 import { bgcolor } from "@mui/system";
 import { blueGrey } from "@mui/material/colors";
 import { WithdrawDialog } from "./WithdrawDialog";
+import { UpdateDialog } from "./UpdateDialog";
+import { StakeDialog } from "./StakeDialog";
+import { UnstakeDialog } from "./UnstakeDialog";
 
 export const AccountTab = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-
   return (
     <Stack padding={2} spacing={2} direction="row">
-      <WithdrawDialog/>
-
-  </Stack>
+      <WithdrawDialog />
+      <UpdateDialog />
+      <StakeDialog />
+      <UnstakeDialog />
+    </Stack>
     // <Box
     //   sx={{
     //     bgcolor: "aliceblue",
