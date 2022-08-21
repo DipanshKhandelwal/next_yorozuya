@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Divider, TextField } from '@mui/material';
+import { YorozuAccount } from 'lib/yorozu';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -18,6 +19,25 @@ export default function UpdateButton() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [inputValue, setInputValue] = React.useState('')
+  const [account, setAccount] = React.useState<YorozuAccount | null>(null);
+
+  React.useEffect(() => {
+    const account = new YorozuAccount()
+    setAccount(account);
+    setInputValue(account.get())
+  }, [])
+
+  const onUpdateClicked = () => {
+    account?.update()
+    handleClose()
+  }
+
+  const onInputChange = (e) => {
+    setInputValue(e.target.value)
+    account?.set(e.target.value)
+  }
 
   return (
     <div>
@@ -38,11 +58,11 @@ export default function UpdateButton() {
           </Typography>
           <Box my={4}  >
             <Typography>Account Name:</Typography>
-            <TextField size='small' id="outlined-basic" variant="outlined" />
+            <TextField value={inputValue} onChange={onInputChange} size='small' id="outlined-basic" variant="outlined" />
           </Box>
           <Divider />
           <Box style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 10 }} >
-            <Button variant="outlined">UPDATE</Button>
+            <Button onClick={onUpdateClicked} variant="outlined">UPDATE</Button>
           </Box>
         </Box>
       </Modal>

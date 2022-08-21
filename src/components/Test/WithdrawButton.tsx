@@ -1,10 +1,12 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Divider, TextField } from '@mui/material';
 import Image from 'next/image';
+import { getBalance, withdraw } from 'lib/yorozu';
+import { allow6DecimalPlaces, isNumeric } from 'lib/numeric';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -21,6 +23,19 @@ export default function WithdrawButton() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [inputValue, setInputValue] = useState(0)
+
+  const onWithdrawClick = () => {
+    withdraw(inputValue)
+    handleClose()
+  }
+
+  const onChangeInput = (e: any) => {
+    if (e.target.value && isNumeric(e.target.value)) {
+      setInputValue(Number(e.target.value))
+    }
+  }
 
   return (
     <div>
@@ -45,13 +60,27 @@ export default function WithdrawButton() {
                 <Image height="30px" width="30px" src={SOL_LOGO} />
                 <Typography marginLeft={1} >SOL</Typography>
               </Box>
-              <TextField placeholder="0.00" size='small' id="outlined-basic" variant="outlined" />
+              <TextField
+                size='small'
+                placeholder="0.00"
+                variant="outlined"
+                id="outlined-basic"
+                value={inputValue}
+                onChange={onChangeInput}
+              />
             </Box>
-            Balance: 1.234 SOL ( max )
+            <Typography flex={1} flexDirection='row' >
+              {`Balance: ${getBalance()} SOL`}
+              {' ( '}
+              <span style={{ color: 'blue' }} onClick={() => setInputValue(getBalance())} >
+                max
+              </span>
+              {' ) '}
+            </Typography>
           </Box>
           <Divider />
           <Box style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 10 }} >
-            <Button variant="outlined">WITHDRAW</Button>
+            <Button onClick={onWithdrawClick} variant="outlined">WITHDRAW</Button>
           </Box>
         </Box>
       </Modal>
